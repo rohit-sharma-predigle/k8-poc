@@ -1,0 +1,25 @@
+{
+    "apiVersion": "batch/v1",
+    "kind": "Job",
+    "metadata": {
+      "name": "p1-job"
+    },
+    "spec": {
+      "template": {
+        "metadata": {
+          "name": "p1-job-template"
+        },
+        "spec": {
+          "containers": [
+            {
+              "name": "p1",
+              "image": "p1:latest",
+              "imagePullPolicy": "Never"
+            }
+          ],
+          "restartPolicy": "Never"
+        }
+      }
+    }
+  }
+  

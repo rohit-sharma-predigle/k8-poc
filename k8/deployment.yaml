@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-job-runner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-job-runner
+  template:
+    metadata:
+      labels:
+        app: flask-job-runner
+    spec:
+      containers:
+      - name: flask-job-runner
+        image: orchestrator:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
