@@ -1,23 +1,53 @@
 {
-    "apiVersion": "batch/v1",
-    "kind": "Job",
-    "metadata": {
-      "name": "p1-job"
+    "job1": {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "name": "p1-job"
+      },
+      "spec": {
+        "backoffLimit": 1,
+        "ttlSecondsAfterFinished": 10,
+        "template": {
+          "metadata": {
+            "name": "p1-job"
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "p1",
+                "image": "p1:latest",
+                "imagePullPolicy": "Never"
+              }
+            ],
+            "restartPolicy": "Never"
+          }
+        }
+      }
     },
-    "spec": {
-      "template": {
-        "metadata": {
-          "name": "p1-job-template"
-        },
-        "spec": {
-          "containers": [
-            {
-              "name": "p1",
-              "image": "p1:latest",
-              "imagePullPolicy": "Never"
-            }
-          ],
-          "restartPolicy": "Never"
+    "job2": {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "name": "p2-job"
+      },
+      "spec": {
+        "backoffLimit": 1,
+        "ttlSecondsAfterFinished": 10,
+        "template": {
+          "metadata": {
+            "name": "p2-job"
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "p2",
+                "image": "p2:latest",
+                "imagePullPolicy": "Never"
+              }
+            ],
+            "restartPolicy": "Never"
+          }
         }
       }
     }
